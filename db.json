@@ -1,0 +1,42 @@
+{
+    "pfmfiles": [
+        {
+            "id": 1,
+            "product": "MergePlus",
+            "status": "Open"
+        },
+        {
+            "id": 2,
+            "product": "RMCR",
+            "status": "Amend"
+        },
+        {
+            "id": 3,
+            "product": "4506-T",
+            "status": "Closed"
+        }
+    ],
+    "trades": [
+        {
+            "id": 1,
+            "acctnum": "100045678",
+            "acctname": "Bank Of America",
+            "type": "Mortgage",
+            "fileId": 2
+        },
+        {
+            "id": 2,
+            "acctnum": "54758378701",
+            "acctname": "American Express",
+            "type": "Revolving",
+            "fileId": 2
+        },
+        {
+            "id": 3,
+            "acctnum": "4823094829482908",
+            "acctname": "Toyota Motors",
+            "type": "Creditline",
+            "fileId": 1
+        }
+    ]
+}
