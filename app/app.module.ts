@@ -5,6 +5,7 @@ import { BrowserModule }     from '@angular/platform-browser';
 import { SharedModule }      from './shared/shared.module';
 import { UsersModule }       from './users/users.module';
 import { PostsModule }       from './posts/posts.module';
+import { LoginModule }       from './login/login.module';
 
 import { AppComponent }      from './app.component';
 import { HomeComponent }     from './home/home.component';
@@ -21,6 +22,7 @@ import { routing }           from './app.routing';
         SharedModule,
         UsersModule,
         PostsModule,
+        LoginModule,
         usersRouting,
         postsRouting,
         routing

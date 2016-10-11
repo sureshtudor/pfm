@@ -19,24 +19,39 @@
     "trades": [
         {
             "id": 1,
+            "type": "M",
             "acctnum": "100045678",
             "acctname": "Bank Of America",
-            "type": "Mortgage",
-            "fileId": 2
+            "segment": {
+                "fileId": 2,
+                "isVerified": true,
+                "isDeleted": false,
+                "comments":"comment 1"
+            }
         },
         {
             "id": 2,
+            "type": "R",
             "acctnum": "54758378701",
             "acctname": "American Express",
-            "type": "Revolving",
-            "fileId": 2
+            "segment": {
+                "fileId": 2,
+                "isVerified": false,
+                "isDeleted": true,
+                "comments":"comment 2"
+            }
         },
         {
             "id": 3,
+            "type": "U",
             "acctnum": "4823094829482908",
             "acctname": "Toyota Motors",
-            "type": "Creditline",
-            "fileId": 1
+            "segment": {
+                "fileId": 1,
+                "isVerified": true,
+                "isDeleted": true,
+                "comments":"comment 3"
+            }
         }
     ]
 }

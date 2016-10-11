@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http }       from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { AppSettings }  from '../app.config';
+
 @Injectable()
 export class UserService {
-	private _url = "http://jsonplaceholder.typicode.com/users";
+	private _url = AppSettings.USERS_URL;
 
 	constructor(private _http: Http) {
 	}
