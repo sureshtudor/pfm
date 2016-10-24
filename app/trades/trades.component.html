@@ -1,0 +1,33 @@
+<h1>Trades
+    <span style="float: right;">
+        <a routerLink="/trades/new" class="btn btn-primary">Add Trade</a>
+    </span>
+</h1>
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Account Name</th>
+        <th>Account Number</th>
+        <th>Trade Type</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let trade of trades">
+        <td>{{ trade.id }}</td>
+        <td>{{ trade.acctname }}</td>
+        <td>{{ trade.acctnum }}</td>
+        <td>{{ trade.type }}</td>
+        <td>
+            <a [routerLink]="['/trades', trade.id]">
+                <i class="glyphicon glyphicon-edit"></i>
+            </a>
+        </td>
+        <td>
+            <i (click)="deleteTrade(trade)" class="glyphicon glyphicon-remove clickable"></i>
+        </td>
+    </tr>
+    </tbody>
+</table>

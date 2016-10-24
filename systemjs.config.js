@@ -11,7 +11,7 @@
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
-      app: 'app',
+      app: 'dist',
       // angular bundles
       '@angular/core':                'npm:@angular/core/bundles/core.umd.js',
       '@angular/common':              'npm:@angular/common/bundles/common.umd.js',
@@ -25,14 +25,14 @@
       'rxjs':                         'npm:rxjs',
       'angular-in-memory-web-api':    'npm:angular-in-memory-web-api',
       'underscore':                   'npm:underscore/underscore.js',
-      // ng2-bootstrap 
+      // ng2-bootstrap
       'ng2-bootstrap/ng2-bootstrap':  'npm:ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
-      'moment':                       'npm:moment/moment.js'
+      'moment':                       'npm:ng2-bootstrap/node_modules/moment/moment.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './js/main.js',
+        main: './main.js',
         defaultExtension: 'js'
       },
       rxjs: {

@@ -1,17 +1,17 @@
-import { NgModule }            from '@angular/core';
-import { CommonModule }        from '@angular/common';
-import { FormsModule, 
-         ReactiveFormsModule } from '@angular/forms';
+import {NgModule}                           from '@angular/core';
+import {CommonModule}                       from '@angular/common';
+import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
+import {ModalModule}                        from 'ng2-bootstrap/ng2-bootstrap';
 
-import { IUser, AuthenticationService } from './authentication.service';
-import { LoginFormComponent }   from './login-form.component';
-
+import {AuthenticationService}              from './authentication.service';
+import {LoginFormComponent}                 from './login-form.component';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ModalModule
     ],
     declarations: [
         LoginFormComponent
@@ -23,5 +23,5 @@ import { LoginFormComponent }   from './login-form.component';
         AuthenticationService
     ]
 })
-export class LoginModule { 
+export class LoginModule {
 }

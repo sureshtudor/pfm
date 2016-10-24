@@ -1,33 +1,55 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { AuthenticationService, IUser } from './authentication.service'
+import {Component, OnInit, AfterViewInit, ViewChild}    from '@angular/core';
+import {FormBuilder, FormGroup, Validators}             from '@angular/forms';
+import {Router}                                         from '@angular/router';
+import {AuthenticationService, IUser}                   from './authentication.service'
+import {BasicValidators}                                from '../shared/basicValidators'
+import {ModalDirective}                                 from 'ng2-bootstrap/ng2-bootstrap';
 
 @Component({
     selector: 'login-form',
     templateUrl: 'app/login/login-form.component.html'
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, AfterViewInit {
     loginForm: FormGroup;
     errorMsg: string;
 
-    constructor(
-        private _service: AuthenticationService,
-        private _fb: FormBuilder) {
+    @ViewChild('smModal')
+    public smModal:ModalDirective;
+
+    constructor(private _fb: FormBuilder,
+                private _router: Router,
+                private _service: AuthenticationService) {
     }
 
     ngOnInit() {
-        let emailRegex = `([a-zA-Z0-9_.]{1}[a-zA-Z0-9_.]*)((@[a-zA-Z]{2}[a-zA-Z]*)[\\\.]([a-zA-Z]{2}|[a-zA-Z]{3}))`;
         this.loginForm = this._fb.group({
-            email: ['studor@corelogic.com', [<any>Validators.required, <any>Validators.pattern(emailRegex)]],
-            password: ['password', [<any>Validators.required, <any>Validators.minLength(5)]],
+            email: ['studor@corelogic.com', BasicValidators.email],
+            password: ['password', [Validators.required, Validators.minLength(5)]]
         });
     }
 
+    ngAfterViewInit() {
+        this.smModal.show();
+    }
+
     login(user: IUser) {
-        if (!this._service.login(user)) {
-            this.errorMsg = 'Failed to login';
-        }
-        this.loginForm.reset();
+        this._service.login(user)
+            .subscribe(
+                data => {
+                    if (data) {
+                        this.closeDialog();
+                    }
+                    else {
+                        this.errorMsg = 'Login Failure!';
+                    }
+                },
+                error => {
+                    this.errorMsg = error;
+                });
+    }
+
+    closeDialog() {
+        this.smModal.hide();
+        this._router.navigate(['/']);
     }
 }

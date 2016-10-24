@@ -1,57 +1,107 @@
 {
-    "pfmfiles": [
-        {
-            "id": 1,
-            "product": "MergePlus",
-            "status": "Open"
-        },
-        {
-            "id": 2,
-            "product": "RMCR",
-            "status": "Amend"
-        },
-        {
-            "id": 3,
-            "product": "4506-T",
-            "status": "Closed"
-        }
-    ],
-    "trades": [
-        {
-            "id": 1,
-            "type": "M",
-            "acctnum": "100045678",
-            "acctname": "Bank Of America",
-            "segment": {
-                "fileId": 2,
-                "isVerified": true,
-                "isDeleted": false,
-                "comments":"comment 1"
-            }
-        },
-        {
-            "id": 2,
-            "type": "R",
-            "acctnum": "54758378701",
-            "acctname": "American Express",
-            "segment": {
-                "fileId": 2,
-                "isVerified": false,
-                "isDeleted": true,
-                "comments":"comment 2"
-            }
-        },
-        {
-            "id": 3,
-            "type": "U",
-            "acctnum": "4823094829482908",
-            "acctname": "Toyota Motors",
-            "segment": {
-                "fileId": 1,
-                "isVerified": true,
-                "isDeleted": true,
-                "comments":"comment 3"
-            }
-        }
-    ]
+  "logins": [
+    {
+      "name": "Administrator",
+      "email": "admin@corelogic.com",
+      "password": "password",
+      "pfmFileId": 1
+    },
+    {
+      "name": "Suresh Tudor",
+      "email": "studor@corelogic.com",
+      "password": "password",
+      "pfmFileId": 2
+    }
+  ],
+  "pfmfiles": [
+    {
+      "id": 1,
+      "product": "MergePlus",
+      "status": "Open"
+    },
+    {
+      "id": 2,
+      "product": "RMCR",
+      "status": "Amend"
+    },
+    {
+      "id": 3,
+      "product": "4506-T",
+      "status": "Closed"
+    }
+  ],
+  "trades": [
+    {
+      "id": 1,
+      "type": "M",
+      "acctnum": 123456789,
+      "acctname": "Bank Of America",
+      "segment": {
+        "pfmFileId": 2,
+        "isVerified": true,
+        "isDeleted": true,
+        "comments": "comment 1"
+      }
+    },
+    {
+      "id": 2,
+      "acctname": "American Express",
+      "acctnum": 381239081,
+      "type": "R",
+      "segment": {
+        "pfmFileId": 1,
+        "isVerified": true,
+        "isDeleted": true,
+        "comments": "comment 2"
+      }
+    },
+    {
+      "id": 3,
+      "type": "U",
+      "acctnum": "4823094829482908",
+      "acctname": "Toyota Motors",
+      "segment": {
+        "pfmFileId": 1,
+        "isVerified": true,
+        "isDeleted": true,
+        "comments": "comment 3"
+      }
+    },
+    {
+      "id": 4,
+      "acctname": "Bank Of Africa",
+      "acctnum": 7623478623894,
+      "type": "Y",
+      "segment": {
+        "pfmFileId": 2,
+        "isVerified": true,
+        "isDeleted": false,
+        "comments": "comment 4"
+      }
+    },
+    {
+      "id": 5,
+      "acctname": "Citi Bank",
+      "acctnum": 23476238489,
+      "type": "M",
+      "segment": {
+        "pfmFileId": 2,
+        "isVerified": true,
+        "isDeleted": false,
+        "comments": "Comment 5"
+      }
+    },
+    {
+      "id": 6,
+      "acctname": "Wells Fargo",
+      "acctnum": 23647326478236,
+      "type": "I",
+      "segment": {
+        "pfmFileId": 2,
+        "isVerified": true,
+        "isDeleted": true,
+        "comments": "some comment."
+      }
+    }
+  ]
 }

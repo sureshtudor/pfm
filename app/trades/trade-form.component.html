@@ -1,50 +1,45 @@
 <h1>{{ title }}</h1>
 <div class="row">
     <div class="col-md-6 well">
-        <form [formGroup]="form" (ngSubmit)="save()">
+        <form [formGroup]="form" (ngSubmit)="save(form.value)">
+            <!-- Trade -->
             <fieldset>
-                <legend>
-                    Trade
-                </legend>
                 <div class="form-group">
-                    <label>Account Name</label>
-                    <input [(ngModel)]="trade.acctname" #acctname formControlName="acctname" type="text" class="form-control">
-                    <div *ngIf="acctname.touched && !acctname.valid" class="alert alert-danger">
+                    <label>Account Name:</label>
+                    <input formControlName="acctname" type="text" class="form-control">
+                    <small [hidden]="form.controls.acctname.valid || form.controls.acctname.pristine">
                         Account Name is required.
-                    </div>
+                    </small>
                 </div>
                 <div class="form-group">
-                    <label>Accont Number</label>
-                    <input [(ngModel)]="trade.acctnum" #acctnum formControlName="acctnum" type="text" class="form-control">
-                    <div *ngIf="acctnum.touched && !acctnum.valid" class="alert alert-danger">
-                        Account Number is required.
-                    </div>
+                    <label>Account Number:</label>
+                    <input formControlName="acctnum" type="text" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>Type</label>
-                    <select [(ngModel)]="trade.type" (ngModelChange)="updateTradeType($event)" class="form-control" >
-                        <option *ngFor="let obj of TradeTypes" [value]="obj.value">{{ obj.name }}</option>
+                    <label>Trade Type:</label>
+                    <select formControlName="type" id="type" class="form-control">
+                        <option *ngFor="let type of types" [value]="type.value">
+                            {{type.name}}
+                        </option>
                     </select>
                 </div>
+                <input formControlName="id" type="hidden">
             </fieldset>
+            <!-- Segment -->
             <fieldset formGroupName="segment">
-                <legend>Segment</legend>
                 <div class="form-group">
-                    <input [(ngModel)]="trade.segment.isVerified" type="checkbox" class="form-control">
+                    <input formControlName="isVerified" type="checkbox">
                     <label>Verified</label>
-                </div>
-                <div class="form-group">
-                    <input [(ngModel)]="trade.segment.isDeleted" type="checkbox" class="form-control">
+                    <input formControlName="isDeleted" type="checkbox">
                     <label>Deleted</label>
                 </div>
                 <div class="form-group">
-                    <label>Comments</label>
-                    <input [(ngModel)]="trade.segment.comments" type="text" class="form-control">
+                    <label>Comments:</label>
+                    <textarea formControlName="comments" class="form-control">{{ form.controls.segment.controls.comments }}</textarea>
                 </div>
+                <input formControlName="pfmFileId" type="hidden">
             </fieldset>
-            <button [disabled]="!form.valid" type="submit" class="btn btn-primary">
-                Save
-            </button>
+            <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
 </div>

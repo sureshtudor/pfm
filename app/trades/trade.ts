@@ -1,24 +1,24 @@
-
 export class Trade {
     id: number;
-    type: string;
-    acctnum: string;
+    type?: string;
     acctname: string;
+    acctnum: string;
     segment = new Segment();
 }
 
 export class Segment {
-    fileId: number;
+    pfmFileId: number;
     isVerified: boolean;
     isDeleted: boolean;
     comments: string;
 }
 
-export var TradeTypes = [
-    { name: "UNKNOWN", value: "U"},
-    { name: "INSTALLMENT", value: "I"},
-    { name: "MORTGAGE", value: "M"},
-    { name: "REVOLVING", value: "R"},
-    { name: "OPEN", value: "O"},
-    { name: "COLLECTION", value: "Y"},
+export const TRADE_TYPES = [
+    {value:null, name: "-- Select a Type --"},
+    {value: "U", name: "UNKNOWN"},
+    {value: "I", name: "INSTALLMENT"},
+    {value: "M", name: "MORTGAGE"},
+    {value: "R", name: "REVOLVING"},
+    {value: "O", name: "OPEN"},
+    {value: "Y", name: "COLLECTION"},
 ];

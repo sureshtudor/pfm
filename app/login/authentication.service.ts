@@ -1,42 +1,54 @@
-import { Injectable } from '@angular/core';
-import { Router }     from '@angular/router';
+import {Injectable, Output, EventEmitter}   from '@angular/core';
+import {Http}                               from '@angular/http';
+import {AppSettings}                        from '../app.config';
 
 export interface IUser {
     name?: string;
     email: string;
     password: string;
+    pfmFileId?: number;
 }
-
-var users: IUser[] = [
-     {name: 'Administrator', email: 'admin@corelogic.com', password:'password'},
-     {name: 'Suresh Tudor', email: 'studor@corelogic.com', password:'password'},
- ];
 
 @Injectable()
 export class AuthenticationService {
 
-    constructor(
-        private _router: Router) { }
+    private _url = AppSettings.LOGINS_URL;
 
-    logout() {
-        localStorage.removeItem("user");
-        this._router.navigate(['/login']);
+    @Output()
+    loggedInEvent: EventEmitter<string> = new EventEmitter<string>();
+
+    @Output()
+    loggedOutEvent: EventEmitter<{}> = new EventEmitter<{}>();
+
+    constructor(private _http: Http) {
     }
 
     login(user: IUser) {
-        let authenticatedUser = users.find(u => u.email === user.email);
+        console.log('Auth.login()' + JSON.stringify(user));
+        let authUrl = this._url + "?email=" + user.email + "&password=" + user.password;
 
-        if (authenticatedUser && authenticatedUser.password === user.password) {
-            localStorage.setItem("user", authenticatedUser.name);
-            this._router.navigate(['/']);
+        return this._http.get(authUrl).map(res => this.authenticate(res.json()));
+    }
+
+    private authenticate(users: IUser[]) {
+        if (users != null && users.length > 0) {
+            localStorage.setItem("user", users[0].name);
+            localStorage.setItem("pfmFileId", String(users[0].pfmFileId));
+            // set event..
+            this.loggedInEvent.emit(users[0].name);
             return true;
         }
         return false;
     }
 
-    checkCredentials() {
-        if (localStorage.getItem("user") === null) {
-            this._router.navigate(['/login']);
-        }
+    logout() {
+        localStorage.removeItem("user");
+        localStorage.removeItem("pfmFileId");
+        // set event..
+        this.loggedOutEvent.emit();
+    }
+
+    isLoggedIn(): boolean {
+        return localStorage.getItem("user") != null;
     }
 }
