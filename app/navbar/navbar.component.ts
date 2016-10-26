@@ -1,13 +1,13 @@
-import {Component, OnInit}      from '@angular/core';
-import {Router}                 from '@angular/router';
+import {Component, OnInit, OnDestroy}   from '@angular/core';
+import {Router}                         from '@angular/router';
 
-import {AuthenticationService}  from '../login/authentication.service'
+import {AuthenticationService}          from '../login/authentication.service'
 
 @Component({
     selector: 'navbar',
     templateUrl: 'app/navbar/navbar.component.html'
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnDestroy {
 
     loginLogoutText: string;
     userName: string;
@@ -19,10 +19,14 @@ export class NavBarComponent implements OnInit {
 
     ngOnInit() {
         this.setLoginLogoutText(this._service.isLoggedIn());
-
         //Subscribe to events
         this._service.loggedInEvent.subscribe(x => this.loginAction(x));
         this._service.loggedOutEvent.subscribe(() => this.logoutAction());
+    }
+
+    ngOnDestroy() {
+        this._service.loggedInEvent.unsubscribe();
+        this._service.loggedOutEvent.unsubscribe();
     }
 
     loginOrOut() {

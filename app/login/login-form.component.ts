@@ -1,24 +1,25 @@
-import {Component, OnInit, AfterViewInit, ViewChild}    from '@angular/core';
-import {FormBuilder, FormGroup, Validators}             from '@angular/forms';
-import {Router}                                         from '@angular/router';
-import {AuthenticationService, IUser}                   from './authentication.service'
-import {BasicValidators}                                from '../shared/basicValidators'
-import {ModalDirective}                                 from 'ng2-bootstrap/ng2-bootstrap';
+import {Component, OnInit, ViewChild}       from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router}                             from '@angular/router';
+import {NgbModal, NgbModalRef}              from '@ng-bootstrap/ng-bootstrap';
+import {AuthenticationService, IUser}       from './authentication.service'
+import {BasicValidators}                    from '../shared/basicValidators'
 
 @Component({
     selector: 'login-form',
     templateUrl: 'app/login/login-form.component.html'
 })
-export class LoginFormComponent implements OnInit, AfterViewInit {
+export class LoginFormComponent implements OnInit {
+
     loginForm: FormGroup;
     errorMsg: string;
-
-    @ViewChild('smModal')
-    public smModal:ModalDirective;
+    modalRef: NgbModalRef;
+    @ViewChild('content') content: string;
 
     constructor(private _fb: FormBuilder,
                 private _router: Router,
-                private _service: AuthenticationService) {
+                private _service: AuthenticationService,
+                private _modalService: NgbModal) {
     }
 
     ngOnInit() {
@@ -26,10 +27,19 @@ export class LoginFormComponent implements OnInit, AfterViewInit {
             email: ['studor@corelogic.com', BasicValidators.email],
             password: ['password', [Validators.required, Validators.minLength(5)]]
         });
+
+        this.modalRef = this._modalService.open(this.content);
+        this.modalRef.result.then(
+            (result) => {
+                this.close(); // closed.
+            },
+            (reason) => {
+                this.close(); // dismissed
+            });
     }
 
-    ngAfterViewInit() {
-        this.smModal.show();
+    close() {
+        this._router.navigate(['/']);
     }
 
     login(user: IUser) {
@@ -37,7 +47,7 @@ export class LoginFormComponent implements OnInit, AfterViewInit {
             .subscribe(
                 data => {
                     if (data) {
-                        this.closeDialog();
+                        this.modalRef.close(); // login success
                     }
                     else {
                         this.errorMsg = 'Login Failure!';
@@ -46,10 +56,5 @@ export class LoginFormComponent implements OnInit, AfterViewInit {
                 error => {
                     this.errorMsg = error;
                 });
-    }
-
-    closeDialog() {
-        this.smModal.hide();
-        this._router.navigate(['/']);
     }
 }

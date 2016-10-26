@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService }       from './post.service';
 import { UserService }       from '../users/user.service';
 
-import * as _ from 'underscore'; 
+import * as _ from 'lodash';
 
 @Component({
     templateUrl: 'app/posts/posts.component.html',
@@ -75,6 +75,7 @@ export class PostsComponent implements OnInit {
     
 	onPageChanged(page) {
         var startIndex = (page - 1) * this.pageSize;
-        this.pagedPosts = _.take(_.rest(this.posts, startIndex), this.pageSize);
+        // this.pagedPosts = _.take(_.rest(this.posts, startIndex), this.pageSize); // underscore
+        this.pagedPosts = _.take(_.drop(this.posts, startIndex), this.pageSize);    // lodash
 	}
 }

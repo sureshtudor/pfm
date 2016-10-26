@@ -1,7 +1,7 @@
 import {NgModule}                           from '@angular/core';
 import {CommonModule}                       from '@angular/common';
 import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
-import {ModalModule}                        from 'ng2-bootstrap/ng2-bootstrap';
+import {NgbModule}                          from '@ng-bootstrap/ng-bootstrap';
 
 import {AuthenticationService}              from './authentication.service';
 import {LoginFormComponent}                 from './login-form.component';
@@ -11,16 +11,16 @@ import {LoginFormComponent}                 from './login-form.component';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        ModalModule
-    ],
-    declarations: [
-        LoginFormComponent
+        NgbModule
     ],
     exports: [
         LoginFormComponent
     ],
+    declarations: [
+        LoginFormComponent
+    ],
     providers: [
-        AuthenticationService
+        AuthenticationService,
     ]
 })
 export class LoginModule {

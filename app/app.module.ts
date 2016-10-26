@@ -1,6 +1,6 @@
 import {NgModule}                       from '@angular/core';
 import {BrowserModule}                  from '@angular/platform-browser';
-import {ModalModule}                    from 'ng2-bootstrap/ng2-bootstrap';
+import {NgbModule}                      from '@ng-bootstrap/ng-bootstrap';
 // modules..
 import {HomeModule}                     from './home/home.module';
 import {LoginModule}                    from './login/login.module';
@@ -20,7 +20,7 @@ import {routing}                        from './app.routing';
 @NgModule({
     imports: [
         BrowserModule,
-        ModalModule,
+        NgbModule.forRoot(),
         HomeModule,
         LoginModule,
         TradesModule,
@@ -33,7 +33,6 @@ import {routing}                        from './app.routing';
         routing
     ],
     exports: [
-        ModalModule
     ],
     declarations: [
         AppComponent,

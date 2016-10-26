@@ -14,7 +14,7 @@ export class Segment {
 }
 
 export const TRADE_TYPES = [
-    {value:null, name: "-- Select a Type --"},
+    {value:null, name: "-- Select --"},
     {value: "U", name: "UNKNOWN"},
     {value: "I", name: "INSTALLMENT"},
     {value: "M", name: "MORTGAGE"},
