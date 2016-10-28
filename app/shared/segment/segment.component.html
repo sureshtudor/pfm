@@ -1,10 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div [formGroup]="form">
+    <ul class="form-group col-xs-6">
+        <li style="float: left">
+            <input type="checkbox" class="form-control" formControlName="overridden">
+            <label>Overridden</label>
+        </li>
+        <li>
+            <input type="checkbox" class="form-control" formControlName="modified">
+            <label>Modified</label>
+        </li>
+        <li>
+            <input type="checkbox" class="form-control" formControlName=="supplement">
+            <label>Supplement</label>
+        </li>
+        <li>
+            <input type="checkbox" class="form-control" formControlName=="verified">
+            <label>Verified</label>
+        </li>
+        <li>
+            <input type="checkbox" class="form-control" formControlName=="deleted">
+            <label>Deleted</label>
+        </li>
+        <li>
+            <input type="checkbox" class="form-control" formControlName=="printable">
+            <label>Printable</label>
+        </li>
+        <li [hidden]="hideChargeable">
+            <input type="checkbox" class="form-control" formControlName=="chargeable">
+            <label>Chargeable</label>
+        </li>
+        <li>
+            <label>Status</label>
+            <select class="form-control" formControlName="status"  id="status">
+                <option *ngFor="let status of STATUS_TYPE" [value]="status.value">
+                    {{status.name}}
+                </option>
+            </select>
+        </li>
+    </ul>
+    <div class="form-group col-xs-6" [hidden]="hideRemark">
+        <label>Remark:</label>
+        <textarea class="form-control" formControlName="remark">{{form.controls.remark}}</textarea>
+    </div>
+</div>
+
+<style>
+    ul {
+        list-style-type: none;
+    }
+    li {
+        float: left;
+    }
+</style>
