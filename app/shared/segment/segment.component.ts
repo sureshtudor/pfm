@@ -1,5 +1,6 @@
 import {Component, Input}       from '@angular/core';
 import {FormGroup, FormBuilder} from "@angular/forms";
+import {STATUS_TYPE}            from "./segment";
 
 @Component({
     selector: 'segment',
@@ -8,13 +9,12 @@ import {FormGroup, FormBuilder} from "@angular/forms";
 export class SegmentComponent {
 
     @Input() public form: FormGroup;
-
     @Input() public hideRemark: boolean;
-
     @Input() public hideChargeable: boolean;
 
-    constructor(private _fb: FormBuilder) {
+    statusTypes = STATUS_TYPE;
 
+    constructor(private _fb: FormBuilder) {
         this.form = this._fb.group({
             overridden: false,
             modified: false,

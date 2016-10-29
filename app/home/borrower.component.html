@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row" [formGroup]="form">
+        <span>
+            <label>Firstname</label>
+            <input type="text" class="form-control" formControlName="firstName">
+        </span>
+        <span>
+            <label>Lastname</label>
+            <input type="text" class="form-control" formControlName="lastName">
+        </span>
+        <span>
+            <label>Middlename</label>
+            <input type="text" class="form-control" formControlName="middleName">
+        </span>
+        <span>
+            <label>SSN</label>
+            <input type="number" class="form-control" formControlName="ssn">
+        </span>
+        <span>
+            <label>DOB</label>
+            <input type="text" class="form-control" formControlName="dob">
+        </span>
+        <span>
+            <label>Age</label>
+            <input type="number" class="form-control" formControlName="age">
+        </span>
+        <span>
+            <label>Dep</label>
+            <input type="number" class="form-control" formControlName="dep">
+        </span>
+        <span>
+            <label>Phone</label>
+            <input type="number" class="form-control" formControlName="phone">
+        </span>
+        <!--
+        <span>
+            <label>Gender</label>
+            <select class="form-control" formControlName="gender">
+                <option *ngFor="let item of genders" [value]="item.value">
+                    {{item.name}}
+                </option>
+            </select>
+        </span>
+        <span>
+            <label>Marital</label>
+            <select class="form-control" formControlName="marital">
+                <option *ngFor="let item of maritalStatuses" [value]="item.value">
+                    {{item.name}}
+                </option>
+            </select>
+        </span>
+        -->
+    </div>
+</div>

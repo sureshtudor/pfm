@@ -11,14 +11,13 @@ import {TradeService}                         from './trade.service'
 export class TradeFormComponent implements OnInit {
     form: FormGroup;
     title: string;
-    types: any;
+    tradeTypes = TRADE_TYPES;
 
     constructor(private _fb: FormBuilder,
                 private _router: Router,
                 private _route: ActivatedRoute,
                 private _service: TradeService)
     {
-        this.types = TRADE_TYPES;
         this.form = this._fb.group({
             id: '',
             acctname: ['', Validators.required],

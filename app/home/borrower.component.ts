@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input}       from '@angular/core';
+import {FormGroup}              from "@angular/forms";
+import {GENDER, MARITAL_STATUS} from "./home";
 
 @Component({
-    moduleId: module.id,
     selector: 'borrower',
     templateUrl: 'app/home/borrower.component.html'
 })
-export class BorrowerComponent implements OnInit {
-    constructor() { }
+export class BorrowerComponent{
 
-    ngOnInit() { }
+    genders = GENDER;
+    maritalStatuses = MARITAL_STATUS;
 
+    @Input('group') public form: FormGroup;
 }
+

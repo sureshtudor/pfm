@@ -83,7 +83,7 @@
       "id": 5,
       "acctname": "Citi Bank",
       "acctnum": 23476238489,
-      "type": "M",
+      "type": "R",
       "segment": {
         "pfmFileId": 2,
         "isVerified": true,
