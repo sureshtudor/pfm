@@ -1,20 +1,3 @@
-export class Segment {
-
-    public static initSegment(): ISegment {
-        return {
-            overridden: false,
-            modified: false,
-            supplement: false,
-            verified: false,
-            deleted: false,
-            printable: false,
-            chargeable: false,
-            stauts: 4, // None Pending
-            remark: ''
-        }
-    }
-}
-
 export interface ISegment {
     overridden: boolean;
     modified: boolean;
@@ -23,7 +6,7 @@ export interface ISegment {
     deleted: boolean;
     printable: boolean;
     chargeable?: boolean;
-    stauts?: number;
+    status?: number;
     remark?: string;
 }
 

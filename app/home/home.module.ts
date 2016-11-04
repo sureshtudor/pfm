@@ -3,6 +3,8 @@ import {CommonModule}                       from '@angular/common'
 import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import {RouterModule}                       from '@angular/router';
 
+import {SharedModule}                       from "../shared/shared.module";
+
 import {HomeService}                        from "./home.service";
 import {HomeComponent}                      from "./home.component";
 import {BorrowerComponent}                  from "./borrower.component";
@@ -12,7 +14,8 @@ import {BorrowerComponent}                  from "./borrower.component";
         RouterModule,
         FormsModule,
         ReactiveFormsModule,
-        CommonModule
+        CommonModule,
+        SharedModule
     ],
     declarations: [
         HomeComponent,

@@ -1,35 +1,35 @@
-<div class="container">
-    <div class="row" [formGroup]="form">
+<div [formGroup]="form" class="container" (change)="onValueChanged($event)">
+    <div class="row">
         <span>
-            <input type="checkbox" class="form-control" formControlName="overridden">
+            <input type="checkbox" class="form-control" formControlName="overridden" [(ngModel)]="model.overridden">
             <label>Overridden</label>
         </span>
         <span>
-            <input type="checkbox" class="form-control" formControlName="modified">
+            <input type="checkbox" class="form-control" formControlName="modified" [(ngModel)]="model.modified">
             <label>Modified</label>
         </span>
         <span>
-            <input type="checkbox" class="form-control" formControlName=="supplement">
+            <input type="checkbox" class="form-control" formControlName="supplement" [(ngModel)]="model.supplement">
             <label>Supplement</label>
         </span>
         <span>
-            <input type="checkbox" class="form-control" formControlName=="verified">
+            <input type="checkbox" class="form-control" formControlName="verified" [(ngModel)]="model.verified">
             <label>Verified</label>
         </span>
         <span>
-            <input type="checkbox" class="form-control" formControlName=="deleted">
+            <input type="checkbox" class="form-control" formControlName="deleted" [(ngModel)]="model.deleted">
             <label>Deleted</label>
         </span>
         <span>
-            <input type="checkbox" class="form-control" formControlName=="printable">
+            <input type="checkbox" class="form-control" formControlName="printable" [(ngModel)]="model.printable">
             <label>Printable</label>
         </span>
         <span [hidden]="hideChargeable">
-            <input type="checkbox" class="form-control" formControlName=="chargeable">
+            <input type="checkbox" class="form-control" formControlName="chargeable" [(ngModel)]="model.chargeable">
             <label>Chargeable</label>
         </span>
         <span>
-            <select class="form-control" formControlName="status">
+            <select class="form-control" formControlName="status" [(ngModel)]="model.status">
                 <option *ngFor="let item of statusTypes" [value]="item.value">
                     {{item.name}}
                 </option>
@@ -38,6 +38,8 @@
     </div>
     <div class="col" [hidden]="hideRemark">
         <label>Remark:</label>
-        <textarea class="form-control" formControlName="remark">{{form.controls.remark}}</textarea>
+        <textarea class="form-control" formControlName="remark" [(ngModel)]="model.remark">
+            {{form.controls.remark}}
+        </textarea>
     </div>
 </div>

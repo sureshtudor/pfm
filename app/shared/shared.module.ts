@@ -1,22 +1,27 @@
+import {NgModule}                           from '@angular/core';
+import {CommonModule}                       from '@angular/common';
+import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
 
-import { NgModule }            from '@angular/core';
-import { CommonModule }        from '@angular/common';
-
-import { PaginationComponent } from './pagination.component';
-import { SpinnerComponent }    from './spinner.component';
+import {PaginationComponent}                from './pagination.component';
+import {SpinnerComponent}                   from './spinner.component';
+import {SegmentComponent}                   from './segment/segment.component';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
-        PaginationComponent, 
-        SpinnerComponent
+        PaginationComponent,
+        SpinnerComponent,
+        SegmentComponent
     ],
     exports: [
-        PaginationComponent, 
-        SpinnerComponent
+        PaginationComponent,
+        SpinnerComponent,
+        SegmentComponent
     ]
 })
-export class SharedModule { 
+export class SharedModule {
 }

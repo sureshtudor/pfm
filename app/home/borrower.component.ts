@@ -3,6 +3,7 @@ import {Component, Input, Output,
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {IBorrower, GENDER, MARITAL_STATUS}  from "./home";
 import {HomeService}                        from "./home.service";
+import {ISegment}                           from "../shared/segment/segment";
 
 @Component({
     selector: 'borrower',
@@ -10,6 +11,7 @@ import {HomeService}                        from "./home.service";
 })
 export class BorrowerComponent implements OnChanges {
     form: FormGroup;
+    segment: ISegment;
     genders = GENDER;
     maritalStatuses = MARITAL_STATUS;
 
@@ -18,7 +20,6 @@ export class BorrowerComponent implements OnChanges {
     @Output() changeEvent: EventEmitter<IBorrower> = new EventEmitter<IBorrower>();
 
     constructor(fb: FormBuilder, private _service: HomeService) {
-
         this.form = fb.group({
             id: null,
             pfmFileId: null,
@@ -34,6 +35,8 @@ export class BorrowerComponent implements OnChanges {
             dependents: null,
             phone: null
         });
+        // init segment..
+        this.segment = this.initSegment();
     }
 
     // input changes..
@@ -47,6 +50,10 @@ export class BorrowerComponent implements OnChanges {
                     }
                 }
             );
+    }
+
+    onSegmentChange($event) {
+        this.form.markAsDirty();
     }
 
     // output changes..
@@ -63,6 +70,8 @@ export class BorrowerComponent implements OnChanges {
 
     save(borrower: IBorrower) {
         console.log('Saving: ' + JSON.stringify(borrower));
+        console.log('Saving: ' + JSON.stringify(this.segment));
+
         var result = borrower.id ?
             this._service.updateBorrower(borrower) :
             this._service.addBorrower(borrower);
@@ -72,6 +81,20 @@ export class BorrowerComponent implements OnChanges {
             this.form.markAsPristine();
             this.notifyChanges();
         });
+    }
+
+    initSegment(): ISegment {
+        return {
+            overridden: false,
+            modified: false,
+            supplement: false,
+            verified: false,
+            deleted: false,
+            printable: false,
+            chargeable: false,
+            status: 4, // None Pending
+            remark: ''
+        }
     }
 }
 

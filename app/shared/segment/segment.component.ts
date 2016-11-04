@@ -1,16 +1,17 @@
-import {Component, Input}       from '@angular/core';
+import {Component, Input, Output, EventEmitter}       from '@angular/core';
 import {FormGroup, FormBuilder} from "@angular/forms";
-import {STATUS_TYPE}            from "./segment";
+import {STATUS_TYPE, ISegment}  from "./segment";
 
 @Component({
     selector: 'segment',
     templateUrl: 'app/shared/segment/segment.component.html'
 })
 export class SegmentComponent {
-
-    @Input() public form: FormGroup;
-    @Input() public hideRemark: boolean;
-    @Input() public hideChargeable: boolean;
+    form: FormGroup;
+    @Input() model: ISegment;
+    @Input() hideRemark: boolean;
+    @Input() hideChargeable: boolean;
+    @Output() changeEvent: EventEmitter<any> = new EventEmitter<any>();
 
     statusTypes = STATUS_TYPE;
 
@@ -23,8 +24,12 @@ export class SegmentComponent {
             deleted: false,
             printable: false,
             chargeable: false,
-            stauts: 4,
+            status: 4,
             remark: ''
         });
+    }
+
+    onValueChanged($event) {
+        this.changeEvent.emit($event);
     }
 }
