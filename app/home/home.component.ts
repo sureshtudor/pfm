@@ -1,43 +1,28 @@
-import {Component, OnInit}      from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {IBorrower, Identity}    from "./home";
-import {BorrowerComponent} from "./borrower.component";
+import {Component, OnInit}  from '@angular/core';
+import {IBorrower}          from "./home";
 
 @Component({
-    templateUrl: 'app/home/home.component.html'
+    templateUrl: 'app/home/home.component.html',
 })
 export class HomeComponent implements OnInit {
-    form: FormGroup;
+    pfmFileId: number;
 
-    constructor(private _fb: FormBuilder) {
-        this.form = this._fb.group({
-            app: this.initBorrower(),
-            cap: this.initBorrower()
-        });
+    constructor() {
     }
 
     ngOnInit() {
+        this.pfmFileId = Number(localStorage.getItem("pfmFileId"));
     }
 
-    load(identity: Identity) {
-        this.form.setValue(identity, {onlySelf: true});
+    appChangeListener(borrower: IBorrower) {
+        console.log('APP');
+        console.log('Fullname:' + borrower.lastName +', '+ borrower.firstName);
+        console.log('SSN:' + borrower.ssn);
     }
 
-    save(identity: Identity) {
-    }
-
-    initBorrower() {
-        return this._fb.group({
-            firstName: ['', Validators.required],
-            lastName: ['', Validators.required],
-            middleName: '',
-            ssn: [null, Validators.required],
-            gender: '',
-            marital: null,
-            dob: '',
-            age: null,
-            dep: null,
-            phone: null
-        });
+    capChangeListener(borrower: IBorrower) {
+        console.log('CAP');
+        console.log('Fullname:' + borrower.lastName +', '+ borrower.firstName);
+        console.log('SSN:' + borrower.ssn);
     }
 }

@@ -21,7 +21,7 @@ export class TradeService {
 	}
 
 	getTrades(pfmFileId: number): Observable<Trade[]> {
-		var fileUrl = this._url + "/?segment.pfmFileId=" + pfmFileId;
+		var fileUrl = this._url + "?segment.pfmFileId=" + pfmFileId;
 		return this._http.get(fileUrl)
 			.map((res:Response) => res.json())
 			.catch((error:any) => Observable.throw(error.json().error || 'Server error!!'));

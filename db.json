@@ -103,5 +103,37 @@
         "comments": "some comment."
       }
     }
+  ],
+  "borrowers": [
+    {
+      "id": 1,
+      "pfmFileId": 2,
+      "isCoApp": false,
+      "firstName": "MARTIN",
+      "lastName": "TESTCO",
+      "middleName": "S",
+      "ssn": 123456789,
+      "gender": "M",
+      "marital": 2,
+      "dob": "01/01/1970",
+      "age": 40,
+      "dependents": 1,
+      "phone": 8581234567
+    },
+    {
+      "id": 2,
+      "pfmFileId": 2,
+      "isCoApp": true,
+      "firstName": "EMILY",
+      "lastName": "TESTCO",
+      "middleName": "R",
+      "ssn": 987654321,
+      "gender": "F",
+      "marital": 2,
+      "dob": "01/01/1980",
+      "age": 30,
+      "dependents": 1,
+      "phone": 8587654321
+    }
   ]
 }
