@@ -56,7 +56,7 @@
         </table>
         <!-- Segment goes here.. -->
         <div>
-            <segment [model]="segment" [hideChargeable]="true" [hideRemark]="true" (changeEvent)="onSegmentChange($event)"></segment>
+            <segment [model]="segment" [hideChargeable]="false" [hideRemark]="true" (changeEvent)="onSegmentChange($event)"></segment>
         </div>
         <input formControlName="id" type="hidden">
         <input formControlName="pfmFileId" type="hidden">

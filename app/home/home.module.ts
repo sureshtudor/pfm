@@ -2,6 +2,7 @@ import {NgModule}                           from '@angular/core';
 import {CommonModule}                       from '@angular/common'
 import {FormsModule, ReactiveFormsModule}   from '@angular/forms';
 import {RouterModule}                       from '@angular/router';
+import {NgbAccordionModule}                 from '@ng-bootstrap/ng-bootstrap';
 
 import {SharedModule}                       from "../shared/shared.module";
 
@@ -15,6 +16,7 @@ import {BorrowerComponent}                  from "./borrower.component";
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
+        NgbAccordionModule,
         SharedModule
     ],
     declarations: [

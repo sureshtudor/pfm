@@ -1,7 +1,12 @@
-<div class="container">
-    <label>Applicant</label>
-    <borrower [isCoApp]="false" [pfmFileId]="pfmFileId" (changeEvent)="appChangeListener($event)"></borrower>
-
-    <label>Co-Applicant</label>
-    <borrower [isCoApp]="true" [pfmFileId]="pfmFileId" (changeEvent)="capChangeListener($event)"></borrower>
-</div>
+<ngb-accordion activeIds="app" closeOthers="true" type="info">
+    <ngb-panel id="app" title="Applicant">
+        <template ngbPanelContent>
+            <borrower [isCoApp]="false" [pfmFileId]="pfmFileId" (changeEvent)="appChangeListener($event)"></borrower>
+        </template>
+    </ngb-panel>
+    <ngb-panel id="cap" title="Co-Applicant">
+        <template ngbPanelContent>
+            <borrower [isCoApp]="true" [pfmFileId]="pfmFileId" (changeEvent)="capChangeListener($event)"></borrower>
+        </template>
+    </ngb-panel>
+</ngb-accordion>

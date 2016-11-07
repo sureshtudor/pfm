@@ -4,7 +4,8 @@ import {STATUS_TYPE, ISegment}  from "./segment";
 
 @Component({
     selector: 'segment',
-    templateUrl: 'app/shared/segment/segment.component.html'
+    templateUrl: 'app/shared/segment/segment.component.html',
+    styleUrls: ['app/shared/segment/segment.style.css']
 })
 export class SegmentComponent {
     form: FormGroup;
