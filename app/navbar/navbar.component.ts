@@ -1,7 +1,9 @@
 import {Component, OnInit, OnDestroy}   from '@angular/core';
 import {Router}                         from '@angular/router';
-
+import {NgbModal}                       from '@ng-bootstrap/ng-bootstrap';
 import {AuthenticationService}          from '../login/authentication.service'
+import {SearchComponent}                from "../search/search.component";
+import {SearchService}                  from "../search/search.service";
 
 @Component({
     selector: 'navbar',
@@ -10,37 +12,43 @@ import {AuthenticationService}          from '../login/authentication.service'
 export class NavBarComponent implements OnInit, OnDestroy {
 
     loginLogoutText: string;
+    selectedFileText: string;
     userName: string;
 
     constructor(
-        private _router: Router,
-        private _service: AuthenticationService) {
+        private router: Router,
+        private authService: AuthenticationService,
+        private searchService: SearchService,
+        private searchModal: NgbModal) {
     }
 
     ngOnInit() {
-        this.setLoginLogoutText(this._service.isLoggedIn());
+        this.selectedFileText = 'Search';
+        this.setLoginLogoutText(this.authService.isLoggedIn());
         //Subscribe to events
-        this._service.loggedInEvent.subscribe(x => this.loginAction(x));
-        this._service.loggedOutEvent.subscribe(() => this.logoutAction());
+        this.authService.loggedInEvent.subscribe(x => this.loginAction(x));
+        this.authService.loggedOutEvent.subscribe(() => this.logoutAction());
+        this.searchService.fileSelectedEvent.subscribe(x => this.setSelectedFileText(x));
     }
 
     ngOnDestroy() {
-        this._service.loggedInEvent.unsubscribe();
-        this._service.loggedOutEvent.unsubscribe();
+        this.authService.loggedInEvent.unsubscribe();
+        this.authService.loggedOutEvent.unsubscribe();
+        this.searchService.fileSelectedEvent.unsubscribe();
     }
-
-    loginOrOut() {
-        if (this._service.isLoggedIn()) { //logout
-            this._service.logout();
-        }
-        else {
-            this._router.navigate(['/login']);
-        }
-    };
 
     setLoginLogoutText(loggedIn: boolean) {
         this.loginLogoutText = (loggedIn) ? 'Logout' : 'Login';
     }
+
+    loginOrOut() {
+        if (this.authService.isLoggedIn()) { //logout
+            this.authService.logout();
+        }
+        else {
+            this.router.navigate(['/login']);
+        }
+    };
 
     private loginAction(username: string) {
         this.userName = username;
@@ -50,5 +58,15 @@ export class NavBarComponent implements OnInit, OnDestroy {
     private logoutAction() {
         this.userName = '';
         this.setLoginLogoutText(false);
+        this.searchService.fileReset();
+    }
+
+    //********************* Search Modal **************************//
+    openSearchModal() {
+        this.searchModal.open(SearchComponent);
+    }
+
+    setSelectedFileText(pfmFileId: string) {
+        this.selectedFileText = pfmFileId;
     }
 }

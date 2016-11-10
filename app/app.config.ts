@@ -8,6 +8,10 @@ export class AppSettings {
         return 'http://localhost:4000/logins';
     }
 
+    public static get PFMFILE_URL(): string {
+        return 'http://localhost:4000/pfmfiles';
+    }
+
     public static get TRADE_URL(): string {
         return 'http://localhost:4000/trades';
     }

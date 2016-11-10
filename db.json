@@ -16,18 +16,63 @@
   "pfmfiles": [
     {
       "id": 1,
+      "pfmFileId": "PFM000000001001",
       "product": "MergePlus",
       "status": "Open"
     },
     {
       "id": 2,
+      "pfmFileId": "PFM000000001002",
       "product": "RMCR",
       "status": "Amend"
     },
     {
       "id": 3,
+      "pfmFileId": "PFM000000001003",
       "product": "4506-T",
       "status": "Closed"
+    },
+    {
+      "id": 4,
+      "pfmFileId": "PFM000000001004",
+      "product": "MergePlus",
+      "status": "Open"
+    },
+    {
+      "id": 5,
+      "pfmFileId": "PFM000000001005",
+      "product": "RMCR",
+      "status": "Amend"
+    },
+    {
+      "id": 6,
+      "pfmFileId": "PFM000000001006",
+      "product": "MergePlus",
+      "status": "Closed"
+    },
+    {
+      "id": 7,
+      "pfmFileId": "PFM000000001007",
+      "product": "RMCR",
+      "status": "Open"
+    },
+    {
+      "id": 8,
+      "pfmFileId": "PFM000000001008",
+      "product": "MergePlus",
+      "status": "Closed"
+    },
+    {
+      "id": 9,
+      "pfmFileId": "PFM000000001009",
+      "product": "RMCR",
+      "status": "Amend"
+    },
+    {
+      "id": 10,
+      "pfmFileId": "PFM000000001010",
+      "product": "4506-T",
+      "status": "Amend"
     }
   ],
   "trades": [
