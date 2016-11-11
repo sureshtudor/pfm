@@ -1,4 +1,4 @@
-<ngb-accordion activeIds="app" closeOthers="true" type="info">
+<ngb-accordion activeIds="app" closeOthers="true" type="default">
     <ngb-panel id="app" title="Applicant">
         <template ngbPanelContent>
             <borrower [isCoApp]="false" [pfmFileId]="pfmFileId" (changeEvent)="appChangeListener($event)"></borrower>

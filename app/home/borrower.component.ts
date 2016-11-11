@@ -16,13 +16,13 @@ export class BorrowerComponent implements OnChanges {
     maritalStatuses = MARITAL_STATUS;
 
     @Input() isCoApp: boolean;
-    @Input() pfmFileId: number;
+    @Input() pfmFileId: string;
     @Output() changeEvent: EventEmitter<IBorrower> = new EventEmitter<IBorrower>();
 
     constructor(fb: FormBuilder, private _service: HomeService) {
         this.form = fb.group({
             id: null,
-            pfmFileId: null,
+            pfmFileId: '',
             isCoApp: false,
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
@@ -41,6 +41,7 @@ export class BorrowerComponent implements OnChanges {
 
     // input changes..
     ngOnChanges() {
+        this.form.reset();
         this._service.getBorrower(this.pfmFileId, this.isCoApp)
             .subscribe(
                 data => this.load(data),

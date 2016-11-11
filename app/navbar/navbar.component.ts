@@ -13,7 +13,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
     isAuthenticated: boolean;
     authenticatedUser: string;
-    selectedPfmFileId = 'Search';
+    selectedPfmFileId = 'Open File';
 
     constructor(
         private router: Router,

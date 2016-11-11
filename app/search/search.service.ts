@@ -47,6 +47,6 @@ export class SearchService {
     fileReset() {
         localStorage.removeItem("pfmFileId");
         localStorage.removeItem("isReadOnly");
-        this.fileSelectedEvent.emit("Search");
+        this.fileSelectedEvent.emit("Open File");
     }
 }
