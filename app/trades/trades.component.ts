@@ -11,7 +11,7 @@ export class TradesComponent implements OnInit {
     }
 
     ngOnInit() {
-        let cachedPfmFileId = Number(localStorage.getItem("pfmFileId"));
+        let cachedPfmFileId = localStorage.getItem("pfmFileId");
         this._service.getTrades(cachedPfmFileId)
             .subscribe(trades => this.trades = trades);
     }

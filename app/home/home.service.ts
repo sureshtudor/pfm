@@ -24,7 +24,7 @@ export class HomeService {
             .catch((error: any) => Observable.throw(error.json().error || 'Server error!!'));//...errors if any
     }
 
-    getBorrower(pfmFileId: number, isCoApp: boolean): Observable<IBorrower[]> {
+    getBorrower(pfmFileId: string, isCoApp: boolean): Observable<IBorrower[]> {
         var url = this._borrowerUrl + "?pfmFileId=" + pfmFileId + "&isCoApp=" + isCoApp;
         return this._http.get(url) // ...using get request
             .map((res: Response) => res.json()) // ...and calling .json() on the response to return data

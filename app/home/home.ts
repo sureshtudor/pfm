@@ -1,6 +1,6 @@
 export interface IBorrower {
     id: number,
-    pfmFileId: number,
+    pfmFileId: string,
     isCoApp: boolean,
     firstName: string,
     lastName: string,

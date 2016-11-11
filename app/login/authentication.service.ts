@@ -3,10 +3,10 @@ import {Http}                               from '@angular/http';
 import {AppSettings}                        from '../app.config';
 
 export interface IUser {
+    id?: number;
     name?: string;
     email: string;
     password: string;
-    pfmFileId?: number;
 }
 
 @Injectable()
@@ -16,9 +16,6 @@ export class AuthenticationService {
 
     @Output()
     loggedInEvent: EventEmitter<string> = new EventEmitter<string>();
-
-    @Output()
-    loggedOutEvent: EventEmitter<{}> = new EventEmitter<{}>();
 
     constructor(private _http: Http) {
     }
@@ -32,23 +29,15 @@ export class AuthenticationService {
 
     private authenticate(users: IUser[]) {
         if (users != null && users.length > 0) {
-            localStorage.setItem("user", users[0].name);
-            localStorage.setItem("pfmFileId", String(users[0].pfmFileId));
-            // set event..
-            this.loggedInEvent.emit(users[0].name);
+            let user = users[0];
+            localStorage.setItem("userId", String(user.id));
+            this.loggedInEvent.emit(user.name);
             return true;
         }
         return false;
     }
 
     logout() {
-        localStorage.removeItem("user");
-        localStorage.removeItem("pfmFileId");
-        // set event..
-        this.loggedOutEvent.emit();
-    }
-
-    isLoggedIn(): boolean {
-        return localStorage.getItem("user") != null;
+        localStorage.removeItem("userid");
     }
 }

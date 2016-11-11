@@ -1,16 +1,16 @@
 {
   "logins": [
     {
+      "id": 1,
       "name": "Administrator",
-      "email": "admin@corelogic.com",
-      "password": "password",
-      "pfmFileId": 1
+      "email": "admin@google.com",
+      "password": "password"
     },
     {
-      "name": "Suresh Tudor",
-      "email": "studor@corelogic.com",
-      "password": "password",
-      "pfmFileId": 2
+      "id": 2,
+      "name": "Suresh",
+      "email": "suresh@google.com",
+      "password": "password"
     }
   ],
   "pfmfiles": [
@@ -82,7 +82,7 @@
       "acctnum": 123456789,
       "acctname": "Bank Of America",
       "segment": {
-        "pfmFileId": 2,
+        "pfmFileId": "PFM000000001001",
         "isVerified": true,
         "isDeleted": true,
         "comments": "comment 1"
@@ -94,7 +94,7 @@
       "acctnum": 381239081,
       "type": "R",
       "segment": {
-        "pfmFileId": 1,
+        "pfmFileId": "PFM000000001001",
         "isVerified": true,
         "isDeleted": true,
         "comments": "comment 2"
@@ -106,7 +106,7 @@
       "acctnum": "4823094829482908",
       "acctname": "Toyota Motors",
       "segment": {
-        "pfmFileId": 1,
+        "pfmFileId": "PFM000000001001",
         "isVerified": true,
         "isDeleted": true,
         "comments": "comment 3"
@@ -118,7 +118,7 @@
       "acctnum": 7623478623894,
       "type": "Y",
       "segment": {
-        "pfmFileId": 2,
+        "pfmFileId": "PFM000000001001",
         "isVerified": true,
         "isDeleted": false,
         "comments": "comment 4"
@@ -130,7 +130,7 @@
       "acctnum": 23476238489,
       "type": "R",
       "segment": {
-        "pfmFileId": 2,
+        "pfmFileId": "PFM000000001002",
         "isVerified": true,
         "isDeleted": false,
         "comments": "Comment 5"
@@ -142,7 +142,7 @@
       "acctnum": 23647326478236,
       "type": "I",
       "segment": {
-        "pfmFileId": 2,
+        "pfmFileId": "PFM000000001003",
         "isVerified": true,
         "isDeleted": true,
         "comments": "some comment."
@@ -152,7 +152,7 @@
   "borrowers": [
     {
       "id": 1,
-      "pfmFileId": 2,
+      "pfmFileId": "PFM000000001001",
       "isCoApp": false,
       "firstName": "MARTIN",
       "lastName": "TESTCO",
@@ -167,7 +167,7 @@
     },
     {
       "id": 2,
-      "pfmFileId": 2,
+      "pfmFileId": "PFM000000001001",
       "isCoApp": true,
       "firstName": "EMILY",
       "lastName": "TESTCO",

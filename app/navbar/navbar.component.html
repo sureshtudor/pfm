@@ -15,14 +15,14 @@
         <!-- float right-->
         <li class="nav-item float-xs-right">
             <a class="nav-link clickable" routerLink="login" (click)="loginOrOut()">
-                {{loginLogoutText}}</a>
+                {{isAuthenticated ? 'Logout' : 'Login'}}</a>
         </li>
         <li>
-            <span class="navbar-text float-xs-right">&nbsp;{{userName}}</span>
+            <span class="navbar-text float-xs-right">{{authenticatedUser}}</span>
         </li>
-        <li class="nav-item float-sm-right">
+        <li class="nav-item float-xs-right">
             <a class="nav-link clickable" (click)="openSearchModal()">
-                {{selectedFileText}}</a>
+                {{selectedPfmFileId}}</a>
         </li>
     </ul>
 </nav>

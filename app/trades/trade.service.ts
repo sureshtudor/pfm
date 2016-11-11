@@ -20,7 +20,7 @@ export class TradeService {
 		return this._url + "/" + id;
 	}
 
-	getTrades(pfmFileId: number): Observable<Trade[]> {
+	getTrades(pfmFileId: string): Observable<Trade[]> {
 		var fileUrl = this._url + "?segment.pfmFileId=" + pfmFileId;
 		return this._http.get(fileUrl)
 			.map((res:Response) => res.json())

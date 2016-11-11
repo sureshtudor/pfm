@@ -5,13 +5,13 @@ import {IBorrower}          from "./home";
     templateUrl: 'app/home/home.component.html',
 })
 export class HomeComponent implements OnInit {
-    pfmFileId: number;
+    pfmFileId: string;
 
     constructor() {
     }
 
     ngOnInit() {
-        this.pfmFileId = Number(localStorage.getItem("pfmFileId"));
+        this.pfmFileId = localStorage.getItem("pfmFileId");
     }
 
     appChangeListener(borrower: IBorrower) {

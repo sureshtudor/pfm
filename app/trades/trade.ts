@@ -7,7 +7,7 @@ export class Trade {
 }
 
 export class Segment {
-    pfmFileId: number;
+    pfmFileId: string;
     isVerified: boolean;
     isDeleted: boolean;
     comments: string;
